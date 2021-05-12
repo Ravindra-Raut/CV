@@ -1,0 +1,224 @@
+---
+title: "Ravindra Raut's Resume"
+author: Ravindra Raut
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/resume_styles.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Load csv with position info
+position_data <- read_csv('resume_positions.csv')
+```
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("
+  <style>
+  :root{
+    --decorator-outer-offset-left: -6.5px;
+  }
+  </style>")
+}
+```
+
+
+Aside
+================================================================================
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fas fa-home"></i> Nanded, Maharashtra, India
+- <i class='fa fa-phone'></i> (+91) 700 190 2565
+- <i class='fa fa-envelope'></i> [raviraut206@gmail.com](raviraut206@gmail.com)
+- <i class='fa fa-github'></i> [github.com/Ravindra-Raut](https://github.com/Ravindra-Raut/)
+- <i class='fa fa-linkedin'></i> [ravindra-raut](https://www.linkedin.com/in/ravindra-raut-9402bb69/)
+- <i class='fa fa-laptop'></i> [ravindra-raut.netlify.app](https://ravindra-raut.netlify.app/)
+
+Programming {#skills}
+--------------------------------------------------------------------------------
+**Languages:** R, Python, Bash, PERL\
+**Data visualization:** ggplot2, Plotly, IGV\
+**Version control system:** Git and GitHub\
+**Workflow management system:** Galaxy\
+**Tools:** Rstudio, Pycharm, Visual Studio code\
+**OS:** Linux (Ubuntu), MacOS\
+
+Core competencies 
+--------------------------------------------------------------------------------
+Secondary and tertiary analysis of sequencing data: **Illumina**, **Oxford Nanopore**\
+
+Databases: **RGAP**, **Ensembl**, **UCSC**, **Expasy**, **NCBI**, **HGVS**, **dbSNP**\
+
+WGS: **FastQC**, **SPAdes**, **QUAST**, **PROKKA**\
+
+RNA seq: **Trinity**, **RSEM**, **edgeR**, **Trinotate**\
+
+Repeats analysis: **RepeatModeler**, **RepeatMasker**\
+
+SSR mining: **MISA**, **GMATA**\
+
+Variant calling: **GATK**, **BWA**,**VarScan**, **SnpEff**, **ClinVar**, **Mutalyze**, **VariantValidator**, **Ensembl VEP**\
+
+Main
+================================================================================
+
+Ravindra Raut {#title}
+--------------------------------------------------------------------------------
+I am currently investigating the impact of transposable elements on the adaptation of the rice genome under fungal pathogen challenges and genome duplication. Experienced in using next-generation sequencing technologies like shotgun sequencing, linked reads, and long-read sequencing for whole-genome resequencing, variant calling, transcriptome assembly, differential expression analysis, and developing pipelines. Interested in working on next-generation approaches, solving complex problems relating to genomic plasticity and epigenetics.
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'education')
+```
+
+
+
+Research Experience {data-icon=flask}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'research_positions')
+```
+
+:::aside
+
+Structural Bioinformatics
+--------------------------------------------------------------------------------
+structural databases: **PDB**\ 
+
+Molecular docking: **AutoDock vina**\
+
+Molecular simulation: **GROMACS**\
+
+Homology modeling: **MODELLER**\
+
+Genomics: **Bioconductor**\
+
+Phylogenetic analysis: **MEGA**\
+
+Digital image analysis: **ImageJ**, **Fiji**, **CellProfile**
+
+:::
+
+
+Teaching Experience {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'teaching_positions')
+```
+
+
+
+Award and Honors {data-icon=medal}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'award_and_honors')
+```
+
+
+Talks, Poster Presenatation {data-icon=slideshare}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'talks_poster_presenatation')
+```
+
+
+Peer reviewed Publications {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'peer_reviewed_publications')
+```
+
+
+:::aside
+Certification {data-icon=certificate} 
+--------------------------------------------------------------------------------
+**Coursera**\
+Bioconductor for Genomic Data Science\
+Genomic Data Science with Galaxy\
+Introduction to Genomic Technologies\
+Introduction to Git and GitHub\
+Data Visualization with Plotly Express\
+Graphing with ggplot2\
+
+**IBM**\
+Data Visualization Using Python\
+Data Visualization with R\
+
+**Datacamp**\
+Introduction to the Tidyverse\
+
+:::
+
+Volunteer Work {data-icon=group}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'volunteer_work')
+```
+
+
+:::aside
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
+
+The source code is available at [github.com/Ravindra-Raut/cv](https://github.com/Ravindra-Raut/cv).
+
+See the full version of this CV with links at [ravindra-raut.netlify.app](https://ravindra-raut.netlify.app/cv).
+
+Last updated on `r Sys.Date()`.
+
+:::
+
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+  
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+
+<br>
+
+
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
+
+
