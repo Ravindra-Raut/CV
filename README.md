@@ -1,4 +1,5 @@
-#Fallow the steps:
+#Follow the steps:\
+
 1. Install package\
 devtools::install_github('nstrayer/datadrivencv')
  
@@ -6,13 +7,13 @@ devtools::install_github('nstrayer/datadrivencv')
 ?datadrivencv::use_datadriven_cv
 
 3. To run the package\
+
 datadrivencv::use_datadriven_cv(
-    full_name = "Ravindra Raut",
-    data_location = "https://docs.google.com/spreadsheets/d/1vSZcNnmwqgQBbtCp1SAwGIUB8cqqa3y6VgNqH3C6Jv8/edit#gid=0",
+    full_name = "Ravindra Raut", data_location = "https://docs.google.com/spreadsheets/d/1vSZcNnmwqgQBbtCp1SAwGIUB8cqqa3y6VgNqH3C6Jv8/edit#gid=0",
     pdf_location = "https://github.com/Ravindra-Raut/resume/cv.pdf",
     html_location = "https://github.com/Ravindra-Raut/resume/cv.html",
-    source_location = "https://github.com/Ravindra-Raut/resume"
-  )
+    source_location = "https://github.com/Ravindra-Raut/resume")
+
 
 # Knit the HTML version
 rmarkdown::render("cv.rmd",
