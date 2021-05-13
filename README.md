@@ -6,7 +6,7 @@ devtools::install_github('nstrayer/datadrivencv')
  2. to see more details\
 ?datadrivencv::use_datadriven_cv
 
-3. To run the package\
+3. To run the package
 
 datadrivencv::use_datadriven_cv(full_name = "Ravindra Raut", 
     data_location = "https://docs.google.com/spreadsheets/d/1vSZcNnmwqgQBbtCp1SAwGIUB8cqqa3y6VgNqH3C6Jv8/edit#gid=0",
